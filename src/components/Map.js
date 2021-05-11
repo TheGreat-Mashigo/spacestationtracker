@@ -27,7 +27,7 @@ class Map extends React.Component {
 
   getCoordinates = () => {
     try {
-      API.get("trackerapi", "/locations").then((res) => {
+      API.get("trackerapi", "/location").then((res) => {
         this.setState({
           center: {
             lng: res.location.iss_position.longitude,

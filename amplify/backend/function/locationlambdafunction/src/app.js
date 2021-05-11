@@ -19,7 +19,7 @@ app.use(function (req, res, next) {
 
 var axios = require("axios");
 
-app.get("/locations", function (req, res) {
+app.get("/location", function (req, res) {
   axios
     .get("http://api.open-notify.org/iss-now.json")
     .then((response) => {
@@ -41,7 +41,7 @@ app.get("/item", function (req, res) {
 });
 
 
-app.post("/location", function (req, res) {
+app.post("/coordinates", function (req, res) {
   console.log(req)
   const tableName = "spacetable";
   const timestamp = new Date().toISOString();
