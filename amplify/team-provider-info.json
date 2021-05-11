@@ -15,7 +15,7 @@
       "function": {
         "locationlambdafunction": {
           "deploymentBucketName": "amplify-slsapp-dev-173146-deployment",
-          "s3Key": "amplify-builds/locationlambdafunction-786668475051554f4a67-build.zip"
+          "s3Key": "amplify-builds/locationlambdafunction-324c4f30347473397150-build.zip"
         }
       }
     }
