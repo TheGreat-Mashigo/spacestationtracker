@@ -1,0 +1,35 @@
+{
+  "paths": [
+    {
+      "name": "/location",
+      "lambdaFunction": "locationlambdafunction",
+      "privacy": {
+        "open": true
+      },
+      "policyResourceName": "/location"
+    }
+  ],
+  "resourceName": "trackerapi",
+  "apiName": "trackerapi",
+  "functionArns": [
+    {
+      "lambdaFunction": "locationlambdafunction"
+    }
+  ],
+  "privacy": {
+    "auth": 0,
+    "unauth": 0,
+    "authRoleName": "amplify-slsapp-dev-173146-authRole",
+    "unAuthRoleName": "amplify-slsapp-dev-173146-unauthRole"
+  },
+  "dependsOn": [
+    {
+      "category": "function",
+      "resourceName": "locationlambdafunction",
+      "attributes": [
+        "Name",
+        "Arn"
+      ]
+    }
+  ]
+}
