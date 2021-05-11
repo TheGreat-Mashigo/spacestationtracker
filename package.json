@@ -8,7 +8,7 @@
     "@testing-library/user-event": "^12.1.10",
     "aws-amplify": "^3.4.0",
     "aws-amplify-react": "^4.2.32",
-    "google-map-react": "^1.1.5",
+    "google-map-react": "^2.1.9",
     "moment": "^2.29.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",

@@ -3,8 +3,6 @@ import GoogleMapReact from "google-map-react";
 import iss from "./images/iss.svg";
 import { API } from "aws-amplify";
 
-const MAP_KEY = process.env.GOOGLE_MAP_API_KEY;
-console.log("55555555555555555555", MAP_KEY);
 const img = <img src={iss} alt="iss" className="iss-icon" />;
 
 const SpaceStation = ({ img }) => <div>{img}</div>;
@@ -36,13 +34,18 @@ class Map extends React.Component {
             lat: res.location.iss_position.latitude,
           },
         });
-        console.log(res);
+        this.saveToDynamoDB(res.location)
+        // console.log(res);
       });
     } catch (error) {
       console.log(error);
     }
   };
 
+  saveToDynamoDB = (location) => {
+    console.log("inside saveDataToDynamoDb", location)
+    // we need to call the backend API to save data to the DYnamo DB
+  }
   render() {
     console.log("LAT:", this.state.center.lat);
     console.log("LNG:", this.state.center.lng);
@@ -54,9 +57,8 @@ class Map extends React.Component {
           <GoogleMapReact
             className="map-container"
             bootstrapURLKeys={{
-              key: "AIzaSyA74VUGQbcHcp8oEU-DkKY960sPVmGApic",
+              key: process.env.REACT_APP_GOOGLE_MAP_API_KEY,
             }}
-            // bootstrapURLKeys={{ key: process.env.GOOGLE_MAP_API_KEY}}
             center={this.state.center}
             zoom={this.state.zoom}
           >
