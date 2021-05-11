@@ -1,0 +1,5 @@
+{
+    "tableName": "spacetable",
+    "partitionKeyName": "id",
+    "partitionKeyType": "S"
+}
