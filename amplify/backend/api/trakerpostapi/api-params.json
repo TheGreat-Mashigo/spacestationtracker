@@ -1,0 +1,35 @@
+{
+  "paths": [
+    {
+      "name": "/coordinates",
+      "lambdaFunction": "locationlambdafunction",
+      "privacy": {
+        "open": true
+      },
+      "policyResourceName": "/coordinates"
+    }
+  ],
+  "resourceName": "trakerpostapi",
+  "apiName": "trakerpostapi",
+  "functionArns": [
+    {
+      "lambdaFunction": "locationlambdafunction"
+    }
+  ],
+  "privacy": {
+    "auth": 0,
+    "unauth": 0,
+    "authRoleName": "amplify-slsapp-dev-173146-authRole",
+    "unAuthRoleName": "amplify-slsapp-dev-173146-unauthRole"
+  },
+  "dependsOn": [
+    {
+      "category": "function",
+      "resourceName": "locationlambdafunction",
+      "attributes": [
+        "Name",
+        "Arn"
+      ]
+    }
+  ]
+}
