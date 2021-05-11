@@ -21,5 +21,11 @@
         }
       ]
     }
+  },
+  "storage": {
+    "spacestoragedb": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation"
+    }
   }
 }

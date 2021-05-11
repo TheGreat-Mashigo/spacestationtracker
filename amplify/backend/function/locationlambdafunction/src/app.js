@@ -1,6 +1,9 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var awsServerlessExpressMiddleware = require("aws-serverless-express/middleware");
+const { v4: uuidv4 } = require('uuid')
+const AWS = require('aws-sdk')
+const dynamodb = new AWS.DynamoDB.DocumentClient();
 
 // declare a new express app
 var app = express();
@@ -16,7 +19,7 @@ app.use(function (req, res, next) {
 
 var axios = require("axios");
 
-app.get("/location", function (req, res) {
+app.get("/locations", function (req, res) {
   axios
     .get("http://api.open-notify.org/iss-now.json")
     .then((response) => {
@@ -37,14 +40,36 @@ app.get("/item", function (req, res) {
   res.json({ success: "get call succeed!", url: req.url });
 });
 
-app.get("/item/*", function (req, res) {
-  // Add your code here
-  res.json({ success: "get call succeed!", url: req.url });
-});
 
-/****************************
- * Example post method *
- ****************************/
+app.post("/location", function (req, res) {
+  console.log(req)
+  const tableName = "spacetable";
+  const timestamp = new Date().toISOString();
+  const query = request.query;
+  let params = {
+    TableName: tableName || process.env.STORAGE_DYNAMODB_NAME,
+    Item: {
+      ...request.body,
+      id: uuidv4(),               // auto-generate id
+      createdAt: timestamp,
+      updatedAt: timestamp,
+      iss_position: 
+        { 
+          "longitude": query.iss_position.longitude, 
+          "latitude": query.iss_position.latitude
+        }, 	
+      timestamp: query.time, 
+      message: query.message
+    }
+  }
+  dynamodb.put(params, (error, result) => {
+    if (error) {
+      response.json({ statusCode: 500, error: error.message, url: request.url });
+    } else {
+      response.json({ statusCode: 200, url: request.url, body: JSON.stringify(params.Item) })
+    }
+  });
+});
 
 app.post("/item", function (req, res) {
   // Add your code here

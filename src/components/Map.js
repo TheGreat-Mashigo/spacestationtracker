@@ -27,25 +27,31 @@ class Map extends React.Component {
 
   getCoordinates = () => {
     try {
-      API.get("trackerapi", "/location").then((res) => {
+      API.get("trackerapi", "/locations").then((res) => {
         this.setState({
           center: {
             lng: res.location.iss_position.longitude,
             lat: res.location.iss_position.latitude,
           },
         });
-        this.saveToDynamoDB(res.location)
-        // console.log(res);
+        console.log(res);
+        // this.saveToDynamoDB(res.location);
       });
     } catch (error) {
       console.log(error);
     }
   };
 
-  saveToDynamoDB = (location) => {
-    console.log("inside saveDataToDynamoDb", location)
+  saveToDynamoDB = (request) => {
+    console.log("*********inside saveDataToDynamoDb", request);
     // we need to call the backend API to save data to the DYnamo DB
-  }
+    try {
+      API.post("trackerapi", "/location",{body:request})
+      .then((res) => {});
+    } catch (error) {
+      console.log(error);
+    }
+  };
   render() {
     console.log("LAT:", this.state.center.lat);
     console.log("LNG:", this.state.center.lng);
