@@ -34,7 +34,7 @@ class Map extends React.Component {
             lat: res.location.iss_position.latitude,
           },
         });
-        console.log(res);
+        // console.log(res);
         this.saveToDynamoDB(res.location);
       });
     } catch (error) {
