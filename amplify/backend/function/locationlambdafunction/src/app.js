@@ -64,9 +64,15 @@ app.post("/coordinates", function (req, res) {
   }
   dynamodb.put(params, (error, result) => {
     if (error) {
-      response.json({ statusCode: 500, error: error.message, url: request.url });
+      response.json({ 
+        statusCode: 500, 
+        error: error.message, 
+        url: request.url });
     } else {
-      response.json({ statusCode: 200, url: request.url, body: JSON.stringify(params.Item) })
+      response.json({ 
+        statusCode: 200, 
+        url: request.url, 
+        body: JSON.stringify(params.Item) })
     }
   });
 });

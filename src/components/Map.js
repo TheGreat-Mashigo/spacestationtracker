@@ -35,7 +35,7 @@ class Map extends React.Component {
           },
         });
         console.log(res);
-        // this.saveToDynamoDB(res.location);
+        this.saveToDynamoDB(res.location);
       });
     } catch (error) {
       console.log(error);
@@ -46,7 +46,7 @@ class Map extends React.Component {
     console.log("*********inside saveDataToDynamoDb", request);
     // we need to call the backend API to save data to the DYnamo DB
     try {
-      API.post("trackerapi", "/location",{body:request})
+      API.post("trackerapi", "/coordinates",{body:request})
       .then((res) => {});
     } catch (error) {
       console.log(error);
