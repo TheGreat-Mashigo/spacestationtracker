@@ -35,24 +35,27 @@ app.get("/location", function (req, res) {
     });
 });
 
-app.post("/savelocation", function (req, res) {
-  console.log(req)
+app.post("/savelocation", function (request, response) {
+  console.log(request);
   const tableName = "spacetable";
   const timestamp = new Date().toISOString();
+  console.log(request);
   const query = request.query;
+  const params = request.params;
   let params = {
     TableName: tableName || process.env.STORAGE_DYNAMODB_NAME,
     Item: {
-      ...request.body,
+      // ...request.body,
       id: uuidv4(),               // auto-generate id
       createdAt: timestamp,
       updatedAt: timestamp,
-      iss_position: 
-        { 
-          "longitude": query.iss_position.longitude, 
-          "latitude": query.iss_position.latitude
-        }, 	
+      // iss_position: 
+      //   { 
+      //     "longitude": request.body.location.iss_position.longitude, 
+      //     "latitude": request.location.query.iss_position.latitude
+      //   }, 	
       timestamp: query.time, 
+      timestamps: params.time, 
       message: query.message
     }
   }
