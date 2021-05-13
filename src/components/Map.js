@@ -18,7 +18,7 @@ class Map extends React.Component {
 
   componentDidMount() {
     this.getCoordinates();
-    // this.interval = setInterval(this.getCoordinates, 3000);
+    this.interval = setInterval(this.getCoordinates, 3000);
   }
 
   componentWillUnmount() {
