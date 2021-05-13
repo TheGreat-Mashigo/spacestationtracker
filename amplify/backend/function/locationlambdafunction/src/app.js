@@ -41,7 +41,6 @@ app.post("/savelocation", function (request, response) {
   const timestamp = new Date().toISOString();
   console.log(request);
   const query = request.query;
-  const params = request.params;
   let params = {
     TableName: tableName || process.env.STORAGE_DYNAMODB_NAME,
     Item: {
@@ -55,7 +54,6 @@ app.post("/savelocation", function (request, response) {
       //     "latitude": request.location.query.iss_position.latitude
       //   }, 	
       timestamp: query.time, 
-      timestamps: params.time, 
       message: query.message
     }
   }
