@@ -3,7 +3,7 @@ var bodyParser = require("body-parser");
 var awsServerlessExpressMiddleware = require("aws-serverless-express/middleware");
 const { v4: uuidv4 } = require('uuid')
 const AWS = require('aws-sdk')
-AWS.config.update({region: 'us-east-1'});
+AWS.config.update({region: 'eu-central-1'});
 const dynamodb = new AWS.DynamoDB.DocumentClient();
 
 
