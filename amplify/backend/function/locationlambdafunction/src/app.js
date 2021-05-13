@@ -59,9 +59,11 @@ app.post("/savelocation", function (request, response) {
   }
   dynamodb.put(params, (error, result) => {
     if (error) {
+      console.log(error);
       response.json({ 
         statusCode: 500, 
         error: error.message, 
+        fullerror: error, 
         url: request.url });
     } else {
       response.json({ 
