@@ -18,7 +18,7 @@ class Map extends React.Component {
 
   componentDidMount() {
     this.getCoordinates();
-    this.interval = setInterval(this.getCoordinates, 3000);
+    // this.interval = setInterval(this.getCoordinates, 3000);
   }
 
   componentWillUnmount() {
@@ -46,8 +46,10 @@ class Map extends React.Component {
     console.log("*********inside saveDataToDynamoDb", request);
     // we need to call the backend API to save data to the DYnamo DB
     try {
-      API.post("trackerapi", "/coordinates",{body:request})
-      .then((res) => {});
+      API.post("trackerapi", "/savelocation",{body:request})
+      .then((res) => {
+        console.log(res)
+      });
     } catch (error) {
       console.log(error);
     }

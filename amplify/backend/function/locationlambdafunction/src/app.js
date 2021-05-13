@@ -35,7 +35,7 @@ app.get("/location", function (req, res) {
     });
 });
 
-app.post("/coordinates", function (req, res) {
+app.post("/savelocation", function (req, res) {
   console.log(req)
   const tableName = "spacetable";
   const timestamp = new Date().toISOString();
