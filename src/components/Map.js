@@ -43,7 +43,7 @@ class Map extends React.Component {
   };
 
   saveToDynamoDB = (request) => {
-    console.log("*********inside saveDataToDynamoDb", request);
+    // console.log("*********inside saveDataToDynamoDb", request);
     // we need to call the backend API to save data to the DYnamo DB
     try {
       API.post("trackerapi", "/savelocation",{body:request})
