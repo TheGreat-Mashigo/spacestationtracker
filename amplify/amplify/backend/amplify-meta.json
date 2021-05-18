@@ -1,0 +1,88 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-slsapp-master-172303-authRole",
+      "UnauthRoleArn": "arn:aws:iam::708306190967:role/amplify-slsapp-master-172303-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::708306190967:role/amplify-slsapp-master-172303-authRole",
+      "Region": "eu-central-1",
+      "DeploymentBucketName": "amplify-slsapp-master-172303-deployment",
+      "UnauthRoleName": "amplify-slsapp-master-172303-unauthRole",
+      "StackName": "amplify-slsapp-master-172303",
+      "StackId": "arn:aws:cloudformation:eu-central-1:708306190967:stack/amplify-slsapp-master-172303/8b1d9540-b27d-11eb-90a8-0228e0ef18d4",
+      "AmplifyAppId": "dfmvh6u4yxd4c"
+    }
+  },
+  "function": {
+    "locationlambdafunction": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "output": {
+        "Region": "eu-central-1",
+        "Arn": "arn:aws:lambda:eu-central-1:708306190967:function:locationlambdafunction-master",
+        "Name": "locationlambdafunction-master",
+        "LambdaExecutionRole": "slsappLambdaRolecbdf29d1-master"
+      },
+      "lastPushTimeStamp": "2021-05-18T08:51:54.867Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-slsapp-master-172303-deployment/amplify-cfn-templates/function/locationlambdafunction-cloudformation-template.json",
+        "logicalId": "functionlocationlambdafunction"
+      },
+      "lastBuildTimeStamp": "2021-05-18T08:51:22.926Z",
+      "lastPackageTimeStamp": "2021-05-18T08:51:23.564Z",
+      "distZipFilename": "locationlambdafunction-54395062336354724d32-build.zip",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-slsapp-master-172303-deployment",
+        "s3Key": "amplify-builds/locationlambdafunction-54395062336354724d32-build.zip"
+      },
+      "lastPushDirHash": "Fck4jyGDyLD/ek38VdDNRP1iiys="
+    }
+  },
+  "api": {
+    "trackerapi": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "locationlambdafunction",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ],
+      "output": {
+        "ApiName": "trackerapi",
+        "RootUrl": "https://oygm2nv5vc.execute-api.eu-central-1.amazonaws.com/master",
+        "ApiId": "oygm2nv5vc"
+      },
+      "lastPushTimeStamp": "2021-05-18T08:51:54.867Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-slsapp-master-172303-deployment/amplify-cfn-templates/api/trackerapi-cloudformation-template.json",
+        "logicalId": "apitrackerapi"
+      },
+      "lastPushDirHash": "I2VM4fdwf/wHqmI6nL6kMhLeXDI="
+    }
+  },
+  "storage": {
+    "storagespacelocation": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation",
+      "output": {
+        "PartitionKeyName": "id",
+        "Region": "eu-central-1",
+        "Arn": "arn:aws:dynamodb:eu-central-1:708306190967:table/locationtable2-master",
+        "StreamArn": "arn:aws:dynamodb:eu-central-1:708306190967:table/locationtable2-master/stream/2021-05-13T11:56:11.734",
+        "PartitionKeyType": "S",
+        "Name": "locationtable2-master"
+      },
+      "lastPushTimeStamp": "2021-05-18T08:51:54.867Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-slsapp-master-172303-deployment/amplify-cfn-templates/storage/storagespacelocation-cloudformation-template.json",
+        "logicalId": "storagestoragespacelocation"
+      },
+      "lastPushDirHash": "M4HssW38BQGwFwsfc5oaCY/zDYA="
+    }
+  }
+}
